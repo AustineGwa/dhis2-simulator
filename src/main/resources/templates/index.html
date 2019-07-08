@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>DHIS2 | Home</title>
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <style>
+        body{
+          background-color:silver;
+<!--          cyan-- bluish color-->
+        }
+
+        .container{
+          background-color:powderblue;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">DHIS2 simulator</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/auth"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+  <P>This is Our Simulation of DHIS2 Facilities View</P>
+
+<h3>Facilities present</h3>
+  <table class="table">
+      <thead class="thead-dark">
+      <tr>
+          <th> Name </th>
+          <th> Abreviation </th>
+          <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:if="${facilities.empty}">
+          <td colspan="2"> No Facililies Available </td>
+      </tr>
+      <tr th:each="facility : ${facilities}" class="table-primary">
+          <td><span th:text="${facility.name}"> Name </span></td>
+          <td><span th:text="${facility.abbreviation}"> Abreviation</span></td>
+          <td><span th:text="${facility.description}"> Description</span></td>
+      </tr>
+      </tbody>
+  </table>
+</div>
+</body>
+</html>
